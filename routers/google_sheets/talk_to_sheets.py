@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import json
+import os
 import gspread
 from google.oauth2.service_account import Credentials
 from expense import Expense
@@ -10,6 +11,12 @@ from utils.date import get_current_month
 
 credentials_file = "credentials.json"
 
+
+
+with open("credentials_file", "w") as f:
+    credentials_file_contents = os.getenv(credentials_file)
+    print(f'{credentials_file_contents = }')
+    f.write(credentials_file_contents)
 
 
 scopes = [
